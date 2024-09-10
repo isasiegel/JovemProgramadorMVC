@@ -1,0 +1,18 @@
+﻿@model Aluno
+<form asp-controller="Aluno" asp-action="EditarAluno" method="post">
+    <input type="hidden" asp-for="Id"/>
+
+    <div class="mb-3" col-md-2>
+        <label class="form-label">Nome</label>
+        <input type="text" asp-for="Nome" class="form-control">
+    </div>
+    <div class="mb-3" col-md-2>
+        <label class="form-label">Matrícula</label>
+        <input type="text" asp-for="Matricula" class="form-control">
+    </div>
+    <div class="mb-3" col-md-2>
+        <label class="form-label">CPF</label>
+        <input type="text" asp-for="Cpf" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+</form>

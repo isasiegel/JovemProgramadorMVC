@@ -1,33 +1,39 @@
-﻿    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Matrícula</th>
-      <th scope="col">Nome</th>
-      <th scope="col">CPF</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>12456</td>
-      <td>Mark</td>
-      <td>021.012.458-00</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>78944</td>
-      <td>Jacob</td>
-      <td>120.458.124-23</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="1">45896</td>
-      <td colspan="2">Larry</td>
-      <td colspan="3">789.256.021-82</td>
-    </tr>
-  </tbody>
+﻿@model List<Aluno>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Matricula</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cpf</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (Aluno aluno in Model)
+            {
+                <tr>
+                    <td>@aluno.Matricula </td>
+                    <td>@aluno.Nome </td>
+                    <td>@aluno.Cpf </td>
+
+                    <td>
+                        <div class="d-grid gap-2 d-md-block">
+                            <a type="submit" class="btn btn-primary" role="button" asp-controller="Aluno" asp-action="Editar" asp-route-id="@aluno.Id">Editar</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-grid gap-2 d-md-block">
+                            <a type="submit" class="btn btn-primary" role="button" asp-controller="Aluno" asp-action="Excluir" asp-route-id="@aluno.Id">Excluir</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
 </table>
 
-@{
-}
+<div class="text-center">
+    <a class="btn btn-primary" type="button" asp-controller="Aluno" asp-action="AdicionarAluno">Adicionar aluno</a>
+</div>
